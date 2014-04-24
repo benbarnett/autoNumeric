@@ -1118,7 +1118,7 @@
                 settings.rawValue = '';
                 settings.runOnce = false;
                 var holder = getHolder($this, settings);
-                if (!$this.is('input[type=text], input[type=hidden], input[type=tel], input:not([type])') && $this.prop('tagName') === 'INPUT') { /** checks for non-supported input types */
+                if (!$this.is('input[type=text], input[type=hidden], input[type=tel], input[type=number], input:not([type])') && $this.prop('tagName') === 'INPUT') { /** checks for non-supported input types */
                     $.error('The input type "' + $this.prop('type') + '" is not supported by autoNumeric()');
                     return this;
                 }
@@ -1135,7 +1135,7 @@
                     return this;
                 }
                 if (settings.runOnce === false && settings.aForm) {/** routine to format default value on page load */
-                    if ($this.is('input[type=text], input[type=hidden], input[type=tel], input:not([type])')) {
+                    if ($this.is('input[type=text], input[type=hidden], input[type=tel], input[type=number], input:not([type])')) {
                         var setValue = true;
                         if ($this[0].value === '' && settings.wEmpty === 'empty') {
                             $this[0].value = '';
@@ -1154,7 +1154,7 @@
                     $this.autoNumeric('set', $this.text());
                 }
                 settings.runOnce = true;
-                if ($this.is('input[type=text], input[type=hidden], input[type=tel], input:not([type])')) { /**input types supported "text", "hidden" and no type*/
+                if ($this.is('input[type=text], input[type=hidden], input[type=tel], input[type=number], input:not([type])')) { /**input types supported "text", "hidden" and no type*/
                     $this.on('keydown.autoNumeric', function (e) {
                         holder = getHolder($this);
                         if (holder.that.readOnly) {
@@ -1365,7 +1365,7 @@
                     settings = $this.data('autoNumeric'),
                     value = valueIn.toString(),
                     testValue = valueIn.toString(),
-                    $input = $this.is('input[type=text], input[type=hidden], input[type=tel], input:not([type])');
+                    $input = $this.is('input[type=text], input[type=hidden], input[type=tel], input[type=number], input:not([type])');
                 if (typeof settings !== 'object') {
                     $.error("You must initialize autoNumeric('init', {options}) prior to calling the 'set' method");
                     return false;
@@ -1468,7 +1468,7 @@
             }
             var getValue = '';
             /** determine the element type then use .eq(0) selector to grab the value of the first element in selector */
-            if ($this.is('input[type=text], input[type=hidden], input[type=tel], input:not([type])')) {
+            if ($this.is('input[type=text], input[type=hidden], input[type=tel], input[type=number], input:not([type])')) {
                 getValue = $this.eq(0).val();
             } else if ($.inArray($this.prop('tagName'), settings.tagList) !== -1) {
                 getValue = $this.eq(0).text();
